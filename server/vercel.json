@@ -1,20 +1,8 @@
-  {
-    "version": 2,
-    "builds": [
-        {
-            "src": "api/ai.js",
-            "use": "@vercel/node",
-            "config": {
-                "includeFiles": [
-                    "dist/**"
-                ]
-            }
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "api/ai.js"
-        }
-    ]
+{
+  "version": 2,
+  "functions": {
+    "api/ai.js": {
+      "runtime": "@vercel/node@3"
+    }
+  }
 }

@@ -33,18 +33,19 @@ const LivePreview = () => {
     const imageSrc = videoElement.current.getScreenshot();
     if (!imageSrc) return;
 
-    // Convert to base64
+    // Convert to base64 (remove data:image/jpeg;base64,)
     const base64 = imageSrc.split(",")[1];
 
     setLoading(true);
     try {
-      const response = await axios.post(import.meta.env.VITE_BACKEND_URL, {
+      const apiUrl = import.meta.env.DEV ? "http://localhost:5000/ai/get-review" : "/api/get-review";
+      const response = await axios.post(apiUrl, {
         code: base64,
       });
       // log raw axios response for debugging
-      console.log(response);
+      console.log("Received analysis response:", response);
       const parsed = response.data?.analysis || response.data;
-      console.log(parsed);
+      console.log("Parsed analysis:", parsed);
       setAnalysis(parsed);
 
       setError(null); // Clear any previous errors
@@ -60,11 +61,11 @@ const LivePreview = () => {
 
   useEffect(() => {
     if (analysis) {
-      console.log(analysis);
+      console.log("AI Analysis (state):", analysis);
     }
   }, [analysis]);
 
-  // Simple inline markdown ->
+  // Simple inline markdown -> JSX renderer (supports ## headings, lists, paragraphs, **bold**, *italic*)
   const renderInline = (text) => {
     if (!text) return null;
     // Split by bold (**text**) while keeping delimiters
