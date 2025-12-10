@@ -33,7 +33,7 @@ const LivePreview = () => {
     const imageSrc = videoElement.current.getScreenshot();
     if (!imageSrc) return;
 
-    // Convert to base64 (remove data:image/jpeg;base64,)
+    // Convert to base64
     const base64 = imageSrc.split(",")[1];
 
     setLoading(true);
@@ -64,7 +64,7 @@ const LivePreview = () => {
     }
   }, [analysis]);
 
-  // Simple inline markdown -> JSX renderer (supports ## headings, lists, paragraphs, **bold**, *italic*)
+  // Simple inline markdown ->
   const renderInline = (text) => {
     if (!text) return null;
     // Split by bold (**text**) while keeping delimiters
