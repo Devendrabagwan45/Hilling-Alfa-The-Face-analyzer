@@ -14,7 +14,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/server/api/ai.js"
+      "destination": "/server/api/ai.js/:path*"
     },
     {
       "source": "/:path*",
@@ -33,3 +33,4 @@
     }
   ]
 }
+
