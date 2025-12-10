@@ -38,7 +38,7 @@ const LivePreview = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/ai/get-review", {
+      const response = await axios.post(import.meta.env.VITE_BACKEND_URL, {
         code: base64,
       });
       // log raw axios response for debugging
