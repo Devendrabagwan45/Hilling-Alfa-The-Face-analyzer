@@ -39,7 +39,7 @@ const LivePreview = () => {
     setLoading(true);
     try {
       const apiUrl = import.meta.env.DEV
-        ? "http://localhost:5000/ai/get-review"
+        ? "http://localhost:5000/api/get-review"
         : "/api/get-review";
       const response = await axios.post(apiUrl, {
         code: base64,
