@@ -1,7 +1,7 @@
 const analyzeImage = require("../services/ai.service");
 
 module.exports.getReview = async (req, res) => {
-  const image = req.body.code;
+  const image = req.body.code || req.query.code;
   if (!image) {
     console.error("No image provided in request");
     return res.status(400).json({ error: "Image is required" });
