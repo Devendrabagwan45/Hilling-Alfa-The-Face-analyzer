@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "api/ai.js",
+  "main": "api/get-review.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon api/ai.js"
+    "start": "nodemon api/get-review.js"
   },
   "type": "commonjs",
   "keywords": [],

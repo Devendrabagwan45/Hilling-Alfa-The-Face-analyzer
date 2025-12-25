@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/ai.js",
+            "src": "api/get-review.js",
             "use": "@vercel/node",
             "config": {
                 "includeFiles": [
@@ -14,7 +14,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "api/ai.js"
+            "dest": "api/get-review.js"
         }
     ]
 }
